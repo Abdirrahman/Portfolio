@@ -1,0 +1,55 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  width: 40%;
+  margin-bottom: 5rem;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  background-color: #161616;
+  color: white;
+}
+.navc {
+padding: 1rem;
+  text-decoration: none;
+}
+.navc:hover {
+  text-decoration: none;
+}
+.book {
+  /* other styles for the book element */
+ 
+  color: white;
+}
+
+.book:hover {
+  transform:rotate(90deg);
+  background-color: aqua;
+
+}
+.rot {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+
+}
+.dim {
+  display: flex;
+  justify-content: center;
+  background-color: #161616;
+
+  padding-bottom: 1rem;
+}
+
+.spc {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+/* another */
+
+
