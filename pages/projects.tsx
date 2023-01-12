@@ -1,61 +1,143 @@
-import { Box } from "@chakra-ui/react";
-import Arrow from "./Arrow";
 import styles from "../styles/Home.module.css";
+import Nav from "../components/Nav";
+import {
+  Alert,
+  AlertDescription,
+  Box,
+  CloseButton,
+  useToast,
+  Tag,
+  TagLabel,
+  TagRightIcon,
+  TagLeftIcon,
+} from "@chakra-ui/react";
+import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import dynamic from "next/dynamic";
+import SwiperCore, { Mousewheel, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/mousewheel";
+import { useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 
-function Projects() {
+SwiperCore.use([Mousewheel, Pagination]);
+
+const Aug = dynamic(
+  () => {
+    return import("./aug");
+  },
+  { ssr: false }
+);
+
+export default function Projects() {
+  const toast = useToast();
+  const id = "scroll-toast";
+  useEffect(() => {
+    if (!toast.isActive(id)) {
+      toast({
+        id,
+        isClosable: true,
+        render: () => (
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="stretch"
+            color="black"
+            border="2px 2px 2px 2px red"
+          >
+            <Tag>
+              <TagLabel p={1}>Scroll Down</TagLabel>
+              <em className="ri-arrow-down-line"></em>
+            </Tag>
+          </Box>
+        ),
+      });
+    }
+  }, []);
+
   return (
     <>
+      <Nav />
       <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        bg="#161616"
+        className={styles.pugbox}
+        // display="flex"
+        // justifyContent="center"
+        // mt={40}
+        // ml={12}
+        // background="#161616"
       >
-        <Arrow
-          title="Univents"
-          img="https://optimise2.assets-servd.host/steadfast-tern/production/chaffinch_2021-03-07-210042.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1615150842&s=668f19916b972a6b88bbb2b3681a9d7e"
-          code="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          live="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          desc="A social media application to connect students through university events."
-          tech="React Native, Redux, Firebase in TypeScript."
-        />
-
-        <Arrow
-          title="Supabase"
-          img="https://optimise2.assets-servd.host/steadfast-tern/production/chaffinch_2021-03-07-210042.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1615150842&s=668f19916b972a6b88bbb2b3681a9d7e"
-          code="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          live="supabase-psql-tut.netlify.app"
-          desc="TBC"
-          tech="React, PostgreSQL, Supabase in TypeScript."
-        />
-
-        <Arrow
-          title="Tauri"
-          img="https://optimise2.assets-servd.host/steadfast-tern/production/chaffinch_2021-03-07-210042.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1615150842&s=668f19916b972a6b88bbb2b3681a9d7e"
-          code="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          live="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          desc="A Text editor in markdown for Windows, Mac and Linux."
-          tech="NextJS, React, Tauri, Pocketbase in TypeScript."
-        />
-        <Arrow
-          title="Twitter Bot"
-          img="https://optimise2.assets-servd.host/steadfast-tern/production/chaffinch_2021-03-07-210042.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1615150842&s=668f19916b972a6b88bbb2b3681a9d7e"
-          code="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          live="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          desc="A Bot that tweets our prayer times, hosted in Heroku."
-          tech="Twitter API, Tweepy in Python."
-        />
-        <Arrow
-          title="Covid-19"
-          img="https://optimise2.assets-servd.host/steadfast-tern/production/chaffinch_2021-03-07-210042.jpg?w=1200&h=900&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1615150842&s=668f19916b972a6b88bbb2b3681a9d7e"
-          code="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          live="https://chakra-ui.com/docs/styled-system/style-props#layout-width-and-height"
-          desc="Audio classifcation to diagnoise Covid-19 with coughs sounds using a Convolutional Neural Network. "
-          tech="TensorFlow, Keras, NumPy, Matplotlib, pandas, librosa, scikit-learn in Python."
-        />
+        <Swiper
+          breakpoints={{
+            320: { slidesPerView: 1, spaceBetween: 1000 },
+            480: { slidesPerView: 1, spaceBetween: 1000 },
+            768: { slidesPerView: 1, spaceBetween: 1000 },
+            1024: { slidesPerView: 1, spaceBetween: 0 },
+          }}
+          direction={"horizontal"}
+          mousewheel={true}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <Aug
+              title="Tauri"
+              img="/sylvid.mov"
+              code="https://github.com/Abdirrahman/Syl-Desktop"
+              live=""
+              nolive={styles.nolive}
+              desc="A Text editor in markdown for Windows, Mac and Linux."
+              tech="React, NextJS, Tauri, Pocketbase in TypeScript."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Aug
+              title="React Native Template"
+              img="/univentsvid.mov"
+              code="https://github.com/Abdirrahman/React-Native-Template"
+              live=""
+              nolive={styles.nolive}
+              desc="A starter template with authentication, a cloud database, navigation and some state management setup. "
+              tech="React Native, Redux, Firebase in TypeScript."
+            />{" "}
+          </SwiperSlide>
+          <SwiperSlide>
+            <Aug
+              title="Supabase"
+              img="/supavid.mov"
+              code="https://github.com/Abdirrahman/supa"
+              live="supabase-psql-tut.netlify.app"
+              nolive=""
+              desc="Reddit like message board, with authentication implemented."
+              tech="React, PostgreSQL, Supabase in TypeScript."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Aug
+              title="Twitter Bot"
+              img="/twittervid.mov"
+              code="https://github.com/Abdirrahman/PrayerTimesTwitBot"
+              live="https://twitter.com/BotPrayerTimes"
+              nolive=""
+              desc="A Bot that tweets our prayer times, was hosted in Heroku."
+              tech="Twitter API, Tweepy in Python."
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Aug
+              title="Covid-19"
+              img="/covidvid.mov"
+              code="https://github.com/Abdirrahman/Covid19-ANN"
+              live=""
+              nolive={styles.nolive}
+              desc="Audio classifcation to diagnoise Covid-19 with coughs sounds using a Convolutional Neural Network. "
+              tech="TensorFlow, Keras, NumPy, Matplotlib, pandas, librosa, scikit-learn in Python."
+            />
+          </SwiperSlide>
+        </Swiper>
       </Box>
     </>
   );
 }
-
-export default Projects;

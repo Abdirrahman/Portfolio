@@ -1,19 +1,45 @@
-import React from "react";
 import styles from "../styles/Home.module.css";
 import Nav from "../components/Nav";
-import { Box, Text, useDisclosure, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import dynamic from "next/dynamic";
+import SwiperCore, { Mousewheel, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
-const Projects = dynamic(
+import "swiper/css/mousewheel";
+import Projects from "./projects";
+import { useRouter } from "next/router";
+SwiperCore.use([Mousewheel, Pagination]);
+
+const Another = dynamic(
   () => {
-    return import("./projects");
+    return import("./aug");
   },
   { ssr: false }
 );
 
+interface Props {
+  elID: HTMLElement | null;
+}
+
 function HomePage() {
+  const router = useRouter();
+  //   const scroll2El = (elID: any )=> {
+  //     window.scrollTo({
+  //       top: document.getElementById(elID).offsetTop - 60,
+  //       behavior: 'smooth',
+  //     });
+  //   };
+
+  // const onBtnClick = (e) => {
+  //     e.preventDefault();
+  //     const goto = e.target.getAttribute('goto');
+  //     setTimeout(() => {
+  //       scroll2El(goto);
+  //     }, 100);
+  //   }
   return (
     <>
       <Nav />
@@ -21,21 +47,23 @@ function HomePage() {
         <div className={styles.hero}>
           <span>
             {" "}
-            Hello, I am Abdirrahman a full stack developer, currently working on
-            a few side <a href="www.google.com">syl. </a> Check out my{" "}
+            Hello,
+            <br /> I am Abdirrahman a full stack developer, currently based in
+            London. Check out my{" "}
             <RoughNotation
               type="underline"
               show={true}
               color="white"
               strokeWidth={2}
+              iterations={4}
+              animationDelay={1000}
             >
-              projects.
+              <a onClick={() => router.push("/projects")}>projects.</a>
             </RoughNotation>
           </span>
         </div>
       </Box>
-
-      <Projects />
+      <section id="projects">{/* <Projects /> */}</section>
     </>
   );
 }

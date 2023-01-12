@@ -102,14 +102,35 @@ i {
   text-decoration: none;
 }
 i:hover {
-  color: red;
+  color: rgb(240, 2, 2);
   text-decoration: none;
 }
 
 a {
-  text-decoration: none
+  text-decoration: none;
 }
+a:hover {
+  cursor: pointer;
+}
+
 p {
   padding: 10px;
   text-decoration: none;
+}
+video {
+  margin-top: 25px;
+  margin-left: 25px;
+  width: 700px;
+  height: 398.48px;
+}
+
+@media screen and (max-width: 768px) {
+
+  
+}
+WiredCard {
+  color: "white";
+  padding: 25px;
+  height: 440px;
+  width: 750px;
 }

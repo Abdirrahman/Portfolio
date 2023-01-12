@@ -1,11 +1,4 @@
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  width: 40%;
-  margin-bottom: 5rem;
-}
+
 .nav {
   display: flex;
   justify-content: flex-end;
@@ -35,6 +28,7 @@ padding: 1rem;
   writing-mode: vertical-rl;
   text-orientation: upright;
 
+
 }
 .dim {
   display: flex;
@@ -50,6 +44,115 @@ padding: 1rem;
   color: white;
 }
 
-/* another */
+.wiredstyl {
+  color: "white";
+  padding: 25;
+  height: 440px;
+  width: 750px;
+}
+.wiredvid {
+  width: 700px;
+  height: 398.48px;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin-top: 10rem;
+    padding: 1em;
+  font-size: 2rem;
+  }
+
+  .pdesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    font-size: small;
+    margin-left: -50px;
+    width: 350px
+  }
+  .wiredstyl {
+    color: red;
+    padding-right: 48px;
+    padding-top: 19px;
+    height: 250px;
+    width: 350px;
+    margin-left: -60px;
+
+  }
+  .ptitle {
+    z-index: 10;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    max-width: 183px;
+    display: flex;
+    /* justify-content: center;
+    align-content: flex-end; */
+  }
+.pbox {
+ /* margin-right: 100px; */
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-start;
+ background-color: "#161616";
+ color: white
+}
+
+.pugbox {
+  /* display: flex;
+flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+ margin-left: -60px; */
+ margin-top: 60px;
+}
+  
+}
+
+@media (min-width: 900px) {
+  .ptitle {
+    margin-left: 13px;
+    }
+    
+    .pbox {
+    width: 1296px;
+    height: 582px;
+    display: flex;
+    justify-content: "center";
+    background-color: "#161616";
+    color: white
+    }
+    
+    .pugbox {
+    display: flex;
+    justify-content: center;
+    background-color: "#161616";
+    margin-top: 150px;
+    margin-left: 480px;
+    } 
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      font-family: 'Inter', sans-serif;
+      width: 60%;
+      height: 100%;
+      margin-top: 5rem;
+      margin-bottom: 20rem;
+    }
+
+}
 
 
+
+
+.nolive {
+  visibility: hidden;
+}
