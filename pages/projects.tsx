@@ -17,16 +17,30 @@ import SwiperCore, { Mousewheel, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/mousewheel";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MotionConfig } from "framer-motion";
+import { Toast1, Toast2 } from "../components/toast";
 
 SwiperCore.use([Mousewheel, Pagination]);
 
 const Aug = dynamic(() => import("../components/aug"), { ssr: false });
 
 export default function Projects() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const toast = useToast();
   const id = "scroll-toast";
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (!toast.isActive(id)) {
       toast({
@@ -42,8 +56,8 @@ export default function Projects() {
             border="2px 2px 2px 2px red"
           >
             <Tag>
-              <TagLabel p={1}>Scroll Down</TagLabel>
-              <em className="ri-arrow-down-line"></em>
+              {screenWidth < 600 && <Toast2 />}
+              {screenWidth >= 600 && <Toast1 />}
             </Tag>
           </Box>
         ),

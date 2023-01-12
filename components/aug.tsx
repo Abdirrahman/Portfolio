@@ -74,10 +74,10 @@ export default function Aug({
                 //   boxShadow: "0px 0px 1px 11px red",
                 // }}
               >
-                <a href={code}>
+                <a className={nolive} href={live}>
                   {" "}
                   <WiredIconButton
-                    icon="code"
+                    icon="link"
                     iconColor="white"
                     lineColor="white"
                     iconSize={24}
@@ -85,9 +85,9 @@ export default function Aug({
                 </a>
               </Box>
               <Box>
-                <a className={nolive} href={live}>
+                <a href={code}>
                   <WiredIconButton
-                    icon="link"
+                    icon="code"
                     iconColor="white"
                     lineColor="white"
                     iconSize={24}
