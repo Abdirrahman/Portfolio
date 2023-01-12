@@ -13,6 +13,7 @@ export default function Nav() {
           className={styles.navc}
           href="https://github.com/abdirrahman"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="ri-github-line"></i>
         </a>
@@ -20,6 +21,7 @@ export default function Nav() {
           className={styles.navc}
           href="https://www.linkedin.com/in/abdirrahman/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <i className="ri-linkedin-box-line"></i>
         </a>
