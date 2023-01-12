@@ -9,8 +9,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 
+if (typeof window !== "undefined") {
+  window.history.scrollRestoration = "manual";
+}
+
 export default function App({ Component, pageProps }: AppProps) {
-  const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
   const [showChild, setShowChild] = useState(false);
   useEffect(() => {

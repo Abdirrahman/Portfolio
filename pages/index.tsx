@@ -13,17 +13,6 @@ import Projects from "./projects";
 import { useRouter } from "next/router";
 SwiperCore.use([Mousewheel, Pagination]);
 
-const Another = dynamic(
-  () => {
-    return import("./aug");
-  },
-  { ssr: false }
-);
-
-interface Props {
-  elID: HTMLElement | null;
-}
-
 function HomePage() {
   const router = useRouter();
   return (
