@@ -22,7 +22,7 @@ import { MotionConfig } from "framer-motion";
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const Aug = dynamic(() => import("./aug"), { ssr: false });
+const Aug = dynamic(() => import("../components/aug"), { ssr: false });
 
 export default function Projects() {
   const toast = useToast();
