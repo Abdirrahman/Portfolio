@@ -54,6 +54,8 @@ padding: 1rem;
   width: 700px;
   height: 398.48px;
 }
+/* Mobile screen */
+
 @media (min-width: 300px) and (max-width: 500px) {
   .hero {
     display: flex;
@@ -114,6 +116,8 @@ flex-direction: row;
   
 }
 
+/* MBP screen */
+
 @media (min-width: 900px) and (max-width: 1441px) {
   .ptitle {
     margin-left: 13px;
@@ -140,17 +144,18 @@ flex-direction: row;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 5rem;
+      font-size: 4rem;
       font-family: 'Inter', sans-serif;
-      width: 60%;
+      width: 70%;
       height: 100%;
       margin-top: 5rem;
+      margin-left: 15rem;
       margin-bottom: 20rem;
     }
 
 }
 
-
+/* Desktop screen */
 @media (min-width: 1442px) {
   .ptitle {
     margin-left: 13px;
