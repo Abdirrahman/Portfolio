@@ -39,7 +39,7 @@ export default function Projects() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [screenWidth]);
 
   useEffect(() => {
     if (!toast.isActive(id)) {
