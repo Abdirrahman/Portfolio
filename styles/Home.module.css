@@ -57,6 +57,10 @@ padding: 1rem;
 /* Mobile screen */
 
 @media (min-width: 300px) and (max-width: 500px) {
+  .nav {
+    margin-bottom: 0;
+    padding: 0;
+  }
   .hero {
     display: flex;
     justify-content: center;
@@ -93,6 +97,7 @@ padding: 1rem;
     margin-bottom: 50px;
     max-width: 183px;
     display: flex;
+    
     /* justify-content: center;
     align-content: flex-end; */
   }
@@ -102,7 +107,8 @@ padding: 1rem;
  flex-direction: column;
  justify-content: flex-start;
  background-color: "#161616";
- color: white
+ color: white;
+ height: 95vh;
 }
 
 .pugbox {
@@ -120,7 +126,8 @@ flex-direction: row;
 
 @media (min-width: 900px) and (max-width: 1441px) {
   .ptitle {
-    margin-left: 13px;
+    margin-right: 13px;
+    padding: 0;
     }
     
     .pbox {
@@ -129,14 +136,15 @@ flex-direction: row;
     display: flex;
     justify-content: "center";
     background-color: "#161616";
-    color: white
+    color: white;
+    padding: 6px;
     }
     
     .pugbox {
     display: flex;
     justify-content: center;
     background-color: "#161616";
-    margin-top: 70px;
+    margin-top: 20px;
     margin-left: 250px;
     } 
 
@@ -149,7 +157,7 @@ flex-direction: row;
       width: 70%;
       height: 100%;
       margin-top: 5rem;
-      margin-left: 15rem;
+      margin-left: 1rem;
       margin-bottom: 20rem;
     }
 

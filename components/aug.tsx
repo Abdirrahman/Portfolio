@@ -67,7 +67,7 @@ export default function Aug({
             </RoughNotation>
             <br />
             <br />
-            <Box display="flex" justifyContent="flex-end" mr={10}>
+            <Box display="flex" justifyContent="flex-end" mt={-10} mr={10}>
               <Box
                 mr={3}
                 // _hover={{

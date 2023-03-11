@@ -117,7 +117,7 @@ export default function Projects() {
               title="Supabase"
               img="/supavid.mov"
               code="https://github.com/Abdirrahman/supa"
-              live="supabase-psql-tut.netlify.app"
+              live="https://supabase-psql-tut.netlify.app"
               nolive=""
               desc="Reddit like message board, with authentication implemented."
               tech="React, PostgreSQL, Supabase in TypeScript."
