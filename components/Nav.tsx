@@ -11,7 +11,7 @@ export default function Nav() {
       <div className={styles.nav}>
         <a
           className={styles.navc}
-          href="https://github.com/abdirrahman"
+          href="https://github.com/abdirrahmansl"
           target="_blank"
           rel="noopener noreferrer"
         >
