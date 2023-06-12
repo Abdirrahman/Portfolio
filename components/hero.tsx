@@ -28,7 +28,7 @@ export default function Hero() {
             <WiredDivider />
             <div>
               I'm a Data & Software Engineer based in London. Before that, I
-              graduated from King's College London with a Bachelors in
+              graduated from King&apos;s College London with a Bachelors in
               Electronic Engineering. Take a moment to explore my{" "}
               <RoughNotation
                 type="underline"
