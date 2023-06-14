@@ -24,7 +24,7 @@ interface Props {
   tech: string;
 }
 
-export default function Aug({
+export default function Project({
   title,
   img,
   code,

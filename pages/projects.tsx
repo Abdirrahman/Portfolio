@@ -24,7 +24,7 @@ import { Toast1, Toast2 } from "../components/toast";
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const Aug = dynamic(() => import("../components/aug"), { ssr: false });
+const Project = dynamic(() => import("../components/project"), { ssr: false });
 
 export default function Projects() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -70,14 +70,7 @@ export default function Projects() {
   return (
     <>
       <Nav />
-      <Box
-        className={styles.pugbox}
-        // display="flex"
-        // justifyContent="center"
-        // mt={40}
-        // ml={12}
-        // background="#161616"
-      >
+      <Box className={styles.pugbox}>
         <Swiper
           breakpoints={{
             320: { slidesPerView: 1, spaceBetween: 1000 },
@@ -94,7 +87,7 @@ export default function Projects() {
         >
           <Tooltip label="Swipe Through the projects?">
             <SwiperSlide>
-              <Aug
+              <Project
                 title="Tauri"
                 img="/sylvid.mov"
                 code="https://github.com/Abdirrahman/Syl-Desktop"
@@ -106,7 +99,7 @@ export default function Projects() {
             </SwiperSlide>
           </Tooltip>
           <SwiperSlide>
-            <Aug
+            <Project
               title="React Native Template"
               img="/univentsvid.mov"
               code="https://github.com/Abdirrahman/React-Native-Template"
@@ -117,7 +110,7 @@ export default function Projects() {
             />{" "}
           </SwiperSlide>
           <SwiperSlide>
-            <Aug
+            <Project
               title="Supabase"
               img="/supavid.mov"
               code="https://github.com/Abdirrahman/supa"
@@ -128,7 +121,7 @@ export default function Projects() {
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Aug
+            <Project
               title="Twitter Bot"
               img="/twittervid.mov"
               code="https://github.com/Abdirrahman/PrayerTimesTwitBot"
@@ -139,7 +132,7 @@ export default function Projects() {
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Aug
+            <Project
               title="Covid-19"
               img="/covidvid.mov"
               code="https://github.com/Abdirrahman/Covid19-ANN"

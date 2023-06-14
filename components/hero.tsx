@@ -1,16 +1,9 @@
 import styles from "../styles/Home.module.css";
 import { Box } from "@chakra-ui/react";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import { RoughNotation } from "react-rough-notation";
 import SwiperCore, { Mousewheel, Pagination } from "swiper";
 import "swiper/css";
-import {
-  WiredButton,
-  WiredCard,
-  WiredImage,
-  WiredDivider,
-  WiredIconButton,
-  WiredVideo,
-} from "react-wired-elements";
+import { WiredDivider } from "react-wired-elements";
 import "swiper/css/mousewheel";
 import { useRouter } from "next/router";
 SwiperCore.use([Mousewheel, Pagination]);
