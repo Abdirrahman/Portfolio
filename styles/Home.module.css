@@ -54,6 +54,9 @@ padding: 1rem;
   width: 700px;
   height: 398.48px;
 }
+.WiredFab {
+  color: white;
+}
 /* Mobile screen */
 
 @media (min-width: 300px) and (max-width: 500px) {

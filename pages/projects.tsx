@@ -7,6 +7,7 @@ import {
   CloseButton,
   useToast,
   Tag,
+  Tooltip,
   TagLabel,
   TagRightIcon,
   TagLeftIcon,
@@ -45,6 +46,7 @@ export default function Projects() {
     if (!toast.isActive(id)) {
       toast({
         id,
+        duration: 100000,
         isClosable: true,
         render: () => (
           <Box
@@ -90,17 +92,19 @@ export default function Projects() {
           }}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <Aug
-              title="Tauri"
-              img="/sylvid.mov"
-              code="https://github.com/Abdirrahman/Syl-Desktop"
-              live=""
-              nolive={styles.nolive}
-              desc="A Text editor in markdown for Windows, Mac and Linux."
-              tech="React, NextJS, Tauri, Pocketbase in TypeScript."
-            />
-          </SwiperSlide>
+          <Tooltip label="Swipe Through the projects?">
+            <SwiperSlide>
+              <Aug
+                title="Tauri"
+                img="/sylvid.mov"
+                code="https://github.com/Abdirrahman/Syl-Desktop"
+                live=""
+                nolive={styles.nolive}
+                desc="A Text editor in markdown for Windows, Mac and Linux."
+                tech="React, NextJS, Tauri, Pocketbase in TypeScript."
+              />
+            </SwiperSlide>
+          </Tooltip>
           <SwiperSlide>
             <Aug
               title="React Native Template"

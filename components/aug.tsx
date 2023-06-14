@@ -9,6 +9,7 @@ import {
   WiredImage,
   WiredDivider,
   WiredIconButton,
+  WiredFab,
   WiredVideo,
 } from "react-wired-elements";
 import { CSSProperties } from "react";
@@ -76,22 +77,17 @@ export default function Aug({
               >
                 <a className={nolive} href={live}>
                   {" "}
-                  <WiredIconButton
-                    icon="link"
-                    iconColor="white"
-                    lineColor="white"
-                    iconSize={24}
-                  />
+                  <WiredFab bgColor="black">
+                    {" "}
+                    <em className="ri-link"></em>
+                  </WiredFab>
                 </a>
               </Box>
-              <Box>
+              <Box fontSize={0.1}>
                 <a href={code}>
-                  <WiredIconButton
-                    icon="code"
-                    iconColor="white"
-                    lineColor="white"
-                    iconSize={24}
-                  />
+                  <WiredFab bgColor="black">
+                    <em className="ri-github-line"></em>
+                  </WiredFab>
                 </a>
               </Box>
             </Box>

@@ -90,8 +90,6 @@ body {
   text-decoration: none;
 
 }
-
-
 small {
   font-style: italic;
   color: rgb(227, 224, 224);
@@ -105,7 +103,10 @@ i:hover {
   color: rgb(240, 2, 2);
   text-decoration: none;
 }
-
+em:hover {
+  color: rgb(240, 2, 2);
+  text-decoration: none;
+}
 a {
   text-decoration: none;
 }
