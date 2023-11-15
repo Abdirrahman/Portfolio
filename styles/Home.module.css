@@ -78,6 +78,10 @@ padding: 1rem;
   }
   .name {
     color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -20px;
   }
 
   .pdesc {
@@ -171,6 +175,11 @@ flex-direction: row;
     }
     .name {
       color: rgb(255, 255, 255);
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -20px;
+    font-size: 1.6em;
     }
 
 }
@@ -212,6 +221,8 @@ flex-direction: row;
     }
     .name {
       color: rgb(255, 255, 255);
+
+    
     }
 }
 
