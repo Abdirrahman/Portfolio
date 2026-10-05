@@ -17,7 +17,11 @@ import Layout from "../layouts/Layout.astro";
 
 <script>
   import "wired-divider";
+  import type { WiredDivider } from "wired-divider";
   import { annotate } from "rough-notation";
+
+  const divider = document.querySelector<WiredDivider>("wired-divider")!;
+  new ResizeObserver(() => divider.wiredRender()).observe(divider);
 
   const link = document.querySelector<HTMLElement>(".projects-link")!;
   setTimeout(() => {

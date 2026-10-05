@@ -3,6 +3,7 @@
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: white;
   background: #161616;
+  --page-gutter: clamp(1rem, 3vw, 2rem);
   --swiper-pagination-color: white;
   --swiper-pagination-bullet-inactive-color: white;
   --swiper-pagination-bullet-inactive-opacity: 0.35;
@@ -62,16 +63,17 @@ button:focus-visible {
 }
 
 .hero {
-  width: min(40%, 700px);
-  margin: 5rem auto 20rem;
-  color: hsla(0, 0%, 100%, 0.4);
+  width: min(calc(100% - 2 * var(--page-gutter)), 42rem);
+  margin: clamp(2rem, 10svh, 7rem) auto 3rem;
+  color: #a3a3a3;
+  font-size: clamp(1rem, 0.8rem + 0.35vw, 1.25rem);
   line-height: 1.5;
 }
 
 .hero h1 {
   margin-bottom: 0.75rem;
   color: white;
-  font-size: 1.6rem;
+  font-size: clamp(1.25rem, 1rem + 0.6vw, 1.8rem);
   font-weight: 400;
   text-align: center;
 }
@@ -86,10 +88,10 @@ wired-divider {
   white-space: nowrap;
 }
 
-.projects {
-  width: min(100% - 3rem, 1100px);
-  margin: 3rem auto;
-  padding: 1.5rem 0 3rem;
+.projects.swiper {
+  width: min(calc(100% - 2 * var(--page-gutter)), 1280px);
+  margin: clamp(1rem, 4svh, 3rem) auto 0.75rem;
+  padding: 0.75rem 0.5rem 3.75rem;
 }
 
 .project {
@@ -130,12 +132,41 @@ video {
   display: block;
   width: 100%;
   aspect-ratio: 700 / 398.48;
+  max-height: 48svh;
   object-fit: contain;
 }
 
 .project-description {
   padding: 0.75rem;
   line-height: 1.5;
+}
+
+.project-description small {
+  overflow-wrap: anywhere;
+}
+
+.projects .swiper-pagination-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 !important;
+  background: none;
+  opacity: 1;
+}
+
+.projects .swiper-pagination-bullet::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.35;
+  content: "";
+}
+
+.projects .swiper-pagination-bullet-active::before {
+  opacity: 1;
 }
 
 .project-description p {
@@ -173,10 +204,14 @@ wired-fab {
   color: #1a202c;
   font-size: 0.875rem;
   white-space: nowrap;
+  max-width: calc(100% - 2rem);
+  text-align: center;
 }
 
 .toast {
   top: 1rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .toast:empty {
@@ -184,7 +219,10 @@ wired-fab {
 }
 
 .scroll-hint {
-  bottom: 1rem;
+  position: static;
+  width: fit-content;
+  margin: 0 auto 1rem;
+  transform: none;
 }
 
 .mobile-hint {
@@ -216,21 +254,7 @@ wired-fab {
   to { opacity: 1; }
 }
 
-@media (min-width: 1442px) {
-  .hero {
-    font-size: 1.25rem;
-  }
-
-  .projects {
-    margin-top: 8rem;
-  }
-}
-
 @media (max-width: 899px) {
-  .hero {
-    width: min(85%, 540px);
-  }
-
   .project {
     flex-direction: column;
     gap: 1.5rem;
@@ -239,21 +263,9 @@ wired-fab {
   .project-title {
     flex-basis: auto;
   }
-
-  .projects {
-    margin-top: 2rem;
-  }
 }
 
 @media (max-width: 599px) {
-  .hero {
-    margin-top: 10rem;
-  }
-
-  .hero h1 {
-    font-size: 1rem;
-  }
-
   .video-card {
     padding: 1rem;
   }
@@ -264,6 +276,17 @@ wired-fab {
 
   .mobile-hint {
     display: inline;
+  }
+}
+
+@media (max-height: 500px) and (min-width: 600px) {
+  .project {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .project-title {
+    flex-basis: 150px;
   }
 }
 

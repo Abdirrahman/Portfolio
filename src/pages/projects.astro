@@ -74,14 +74,26 @@ const projects = [
     slidesPerView: 1,
     spaceBetween: 80,
     speed: reducedMotion ? 0 : 300,
-    mousewheel: { releaseOnEdges: true },
+    mousewheel: { enabled: false, releaseOnEdges: true },
     keyboard: { enabled: true },
     pagination: { el: ".swiper-pagination", clickable: true },
     on: {
-      init: annotateSlide,
+      init(swiper) {
+        annotateSlide(swiper);
+        updateMousewheel(swiper);
+      },
+      resize: updateMousewheel,
       slideChangeTransitionEnd: annotateSlide,
     },
   });
+
+  function updateMousewheel(swiper: Swiper) {
+    if (matchMedia("(pointer: fine)").matches && swiper.el.getBoundingClientRect().bottom <= innerHeight) {
+      swiper.mousewheel.enable();
+    } else {
+      swiper.mousewheel.disable();
+    }
+  }
 
   function annotateSlide(swiper: Swiper) {
     const slide = swiper.slides[swiper.activeIndex];

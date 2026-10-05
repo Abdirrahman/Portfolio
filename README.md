@@ -18,6 +18,9 @@ Open http://localhost:4321. Edit `src/pages/index.astro` for the introduction
 and `src/pages/projects.astro` for the project list. Video demos live in `public/`.
 Shared markup and styles live in `src/components/`, `src/layouts/`, and `src/styles/`.
 
+The [responsive verification matrix](docs/responsive-checks.md) records checks
+across 19 desktop, laptop, tablet, and phone viewport sizes.
+
 ## Checks and production build
 
 ```sh
