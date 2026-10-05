@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+import "swiper/css";
+import "swiper/css/pagination";
+
+const projects = [
+  {
+    title: "Tauri",
+    img: "/sylvid.mov",
+    code: "https://github.com/Abdirrahman/Syl-Desktop",
+    desc: "A Text editor in markdown for Windows, Mac and Linux.",
+    tech: "React, NextJS, Tauri, Pocketbase in TypeScript.",
+  },
+  {
+    title: "React Native Template",
+    img: "/univentsvid.mov",
+    code: "https://github.com/Abdirrahman/React-Native-Template",
+    desc: "A starter template with authentication, a cloud database, navigation and some state management setup.",
+    tech: "React Native, Redux, Firebase in TypeScript.",
+  },
+  {
+    title: "Supabase",
+    img: "/supavid.mov",
+    code: "https://github.com/Abdirrahman/supa",
+    live: "https://supabase-psql-tut.netlify.app",
+    desc: "Reddit like message board, with authentication implemented.",
+    tech: "React, PostgreSQL, Supabase in TypeScript.",
+  },
+  {
+    title: "Twitter Bot",
+    img: "/twittervid.mov",
+    code: "https://github.com/Abdirrahman/PrayerTimesTwitBot",
+    live: "https://twitter.com/BotPrayerTimes",
+    desc: "A Bot that tweets our prayer times, was hosted in Heroku.",
+    tech: "Twitter API, Tweepy in Python.",
+  },
+  {
+    title: "Covid-19",
+    img: "/covidvid.mov",
+    code: "https://github.com/Abdirrahman/Covid19-ANN",
+    desc: "Audio classification to diagnose Covid-19 with cough sounds using a Convolutional Neural Network.",
+    tech: "TensorFlow, Keras, NumPy, Matplotlib, pandas, librosa, scikit-learn in Python.",
+  },
+];
+---
+
+<Layout title="Projects | Abdirrahman Mohamed">
+  <h1 class="sr-only">Projects</h1>
+  <section class="projects swiper" aria-label="Portfolio projects">
+    <div class="swiper-wrapper">
+      {projects.map((project) => (
+        <div class="swiper-slide">
+          <Project {...project} />
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination"></div>
+  </section>
+  <p class="scroll-hint" role="status">
+    <span class="desktop-hint">Scroll Down <i class="ri-arrow-down-line" aria-hidden="true"></i></span>
+    <span class="mobile-hint">Swipe <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+  </p>
+</Layout>
+
+<script>
+  import Swiper from "swiper";
+  import { A11y, Keyboard, Mousewheel, Pagination } from "swiper/modules";
+  import { annotate } from "rough-notation";
+
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  new Swiper(".projects", {
+    modules: [A11y, Keyboard, Mousewheel, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 80,
+    speed: reducedMotion ? 0 : 300,
+    mousewheel: { releaseOnEdges: true },
+    keyboard: { enabled: true },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    on: {
+      init: annotateSlide,
+      slideChangeTransitionEnd: annotateSlide,
+    },
+  });
+
+  function annotateSlide(swiper: Swiper) {
+    const slide = swiper.slides[swiper.activeIndex];
+    if (slide.dataset.annotated) return;
+    slide.dataset.annotated = "true";
+    setTimeout(() => {
+      annotate(slide.querySelector<HTMLElement>("[data-project-title]")!, {
+        type: "box",
+        color: "white",
+        strokeWidth: 2,
+        animate: !reducedMotion,
+      }).show();
+    }, 1000);
+    annotate(slide.querySelector<HTMLElement>("[data-project-tech]")!, {
+      type: "highlight",
+      color: "black",
+      multiline: true,
+      animate: !reducedMotion,
+    }).show();
+  }
+
+  setTimeout(() => {
+    document.querySelector<HTMLElement>(".scroll-hint")!.hidden = true;
+  }, 100000);
+</script>

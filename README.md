@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
 
-## Getting Started
+Abdirrahman Mohamed's portfolio, built with Astro 7 and managed with Bun.
+The home page and projects page render as static HTML. Swiper, Rough Notation,
+and Wired Elements provide the carousel and hand-drawn details in the browser.
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
+Install [Bun](https://bun.sh/) (1.3.14 or newer) and Node.js 22.12 or newer,
+then run:
+
+```sh
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:4321. Edit `src/pages/index.astro` for the introduction
+and `src/pages/projects.astro` for the project list. Video demos live in `public/`.
+Shared markup and styles live in `src/components/`, `src/layouts/`, and `src/styles/`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Checks and production build
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```sh
+bun run check
+bun run test
+bun run preview
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`bun run test` builds the site and checks that its routes, project links, and
+video demos are preserved. Use `bun run build` to build without running tests.
+`bun run start` is an alias for the local production preview. The build writes
+the site to `dist/`, including `/`, `/projects`, and the sample `/api/hello` JSON
+endpoint. Deploy `dist/` with any static host. For an existing Vercel project,
+select the Astro framework preset, use `bun install --frozen-lockfile` as the
+install command, `bun run build` as the build command, and `dist` as the output
+directory.
 
-## Learn More
+Commit `bun.lock` with dependency changes. For reproducible installs, run:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+bun install --frozen-lockfile
+```

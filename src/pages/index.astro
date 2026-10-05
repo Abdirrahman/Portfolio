@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="hero" aria-labelledby="name">
+    <h1 id="name">Abdirrahman Mohamed</h1>
+    <wired-divider aria-hidden="true"></wired-divider>
+    <p>
+      I'm a Data &amp; Software Engineer based in London. Before that,
+      I graduated from King's College London with a Bachelors in
+      Electronic Engineering. Take a moment to explore my{" "}
+      <a class="projects-link" href="/projects">projects.</a>
+    </p>
+  </section>
+</Layout>
+
+<script>
+  import "wired-divider";
+  import { annotate } from "rough-notation";
+
+  const link = document.querySelector<HTMLElement>(".projects-link")!;
+  setTimeout(() => {
+    annotate(link, {
+      type: "underline",
+      color: "white",
+      strokeWidth: 2,
+      iterations: 4,
+      animate: !matchMedia("(prefers-reduced-motion: reduce)").matches,
+    }).show();
+  }, 1000);
+</script>
