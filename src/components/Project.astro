@@ -2,21 +2,22 @@
 interface Props {
   title: string;
   img: string;
+  poster: string;
   code: string;
   live?: string;
   desc: string;
   tech: string;
 }
 
-const { title, img, code, live, desc, tech } = Astro.props;
+const { title, img, poster, code, live, desc, tech } = Astro.props;
 ---
 
 <article class="project">
   <h2 class="project-title"><span data-project-title>{title}</span></h2>
   <div class="project-content">
     <wired-card class="video-card" elevation="3">
-      <video muted playsinline loop autoplay preload="metadata" aria-label={`${title} demo`}>
-        <source src={img} />
+      <video muted playsinline loop controls preload="none" poster={poster} aria-label={`${title} demo`}>
+        <source src={img} type="video/mp4" />
       </video>
     </wired-card>
     <div class="project-description">

@@ -7,21 +7,24 @@ import "swiper/css/pagination";
 const projects = [
   {
     title: "Tauri",
-    img: "/sylvid.mov",
+    img: "/videos/sylvid.99d85ff3f3.mp4",
+    poster: "/videos/sylvid.bb628fe3e6.webp",
     code: "https://github.com/Abdirrahman/Syl-Desktop",
     desc: "A Text editor in markdown for Windows, Mac and Linux.",
     tech: "React, NextJS, Tauri, Pocketbase in TypeScript.",
   },
   {
     title: "React Native Template",
-    img: "/univentsvid.mov",
+    img: "/videos/univentsvid.9f8027f029.mp4",
+    poster: "/videos/univentsvid.24f58313d1.webp",
     code: "https://github.com/Abdirrahman/React-Native-Template",
     desc: "A starter template with authentication, a cloud database, navigation and some state management setup.",
     tech: "React Native, Redux, Firebase in TypeScript.",
   },
   {
     title: "Supabase",
-    img: "/supavid.mov",
+    img: "/videos/supavid.94f2af7a67.mp4",
+    poster: "/videos/supavid.341fbcdcc6.webp",
     code: "https://github.com/Abdirrahman/supa",
     live: "https://supabase-psql-tut.netlify.app",
     desc: "Reddit like message board, with authentication implemented.",
@@ -29,7 +32,8 @@ const projects = [
   },
   {
     title: "Twitter Bot",
-    img: "/twittervid.mov",
+    img: "/videos/twittervid.dc2be572e2.mp4",
+    poster: "/videos/twittervid.c60db09a38.webp",
     code: "https://github.com/Abdirrahman/PrayerTimesTwitBot",
     live: "https://twitter.com/BotPrayerTimes",
     desc: "A Bot that tweets our prayer times, was hosted in Heroku.",
@@ -37,7 +41,8 @@ const projects = [
   },
   {
     title: "Covid-19",
-    img: "/covidvid.mov",
+    img: "/videos/covidvid.c40c697c03.mp4",
+    poster: "/videos/covidvid.697f942122.webp",
     code: "https://github.com/Abdirrahman/Covid19-ANN",
     desc: "Audio classification to diagnose Covid-19 with cough sounds using a Convolutional Neural Network.",
     tech: "TensorFlow, Keras, NumPy, Matplotlib, pandas, librosa, scikit-learn in Python.",
@@ -81,11 +86,25 @@ const projects = [
       init(swiper) {
         annotateSlide(swiper);
         updateMousewheel(swiper);
+        updateVideos(swiper);
       },
       resize: updateMousewheel,
+      slideChange: updateVideos,
       slideChangeTransitionEnd: annotateSlide,
     },
   });
+
+  function updateVideos(swiper: Swiper) {
+    swiper.slides.forEach((slide, index) => {
+      const video = slide.querySelector("video")!;
+      if (index === swiper.activeIndex && !reducedMotion) {
+        // Native controls remain available if the browser blocks autoplay.
+        void video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
 
   function updateMousewheel(swiper: Swiper) {
     if (matchMedia("(pointer: fine)").matches && swiper.el.getBoundingClientRect().bottom <= innerHeight) {
