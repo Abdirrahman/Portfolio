@@ -1,35 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
 
 const projects = [
   {
     name: "Covid19-ANN",
-    description: "Exploring COVID-19 detection through cough audio.",
+    description: "COVID-19 detection from cough audio.",
     href: "https://github.com/Abdirrahman/Covid19-ANN",
     icon: "audio",
   },
   {
     name: "Manzar",
-    description: "A quiet, local image and video viewer.",
+    description: "A local image and video viewer.",
     href: "https://github.com/Abdirrahman/Manzar",
     icon: "photo",
   },
   {
     name: "Flags Game",
-    description: "A little game of flags and geography.",
+    description: "A world flag guessing game.",
     href: "https://github.com/Abdirrahman/Flags-Game",
     icon: "flag",
   },
   {
     name: "Plant Sensors",
-    description: "A data pipeline for a museum’s living collection.",
+    description: "Plant sensor data pipeline.",
     href: "https://github.com/a-s-fernando/plant-sensors",
     icon: "plant",
   },
   {
     name: "Deloton",
-    description: "Turning live cycling data into useful insights.",
+    description: "Live cycling data and insights.",
     href: "https://github.com/BenCorrigan1203/Deloton",
     icon: "wheel",
   },
@@ -43,24 +42,20 @@ const projects = [
   </header>
 
   <section id="projects" aria-labelledby="projects-heading">
-    <h2 id="projects-heading">Projects</h2>
+    <h2 id="projects-heading">Selected Projects</h2>
     <ul class="project-list">
       {projects.map((project) => (
         <li>
           <a class="project-link" href={project.href}>
-            <img class="project-icon" src={`/icons/${project.icon}.svg`} width="48" height="48" alt="" />
+            <img class="project-icon" src={`/icons/${project.icon}.svg`} width="32" height="32" alt="" />
             <span class="project-copy">
               <span class="project-name">{project.name}</span>
               <span class="project-description">{project.description}</span>
             </span>
-            <svg class="project-arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 12 12 4M4.5 4H12v7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
           </a>
         </li>
       ))}
     </ul>
   </section>
 
-  <footer><Nav /></footer>
 </Layout>

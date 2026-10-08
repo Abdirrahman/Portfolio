@@ -1,9 +1,15 @@
 # Portfolio
 
-Abdirrahman Mohamed’s minimal, one-page portfolio, built with Astro 7 and Bun.
-The introduction, five project links, and contact links render as static HTML
-with no client JavaScript or external font requests. Each project has a custom
-SVG icon in `public/icons/`.
+Abdirrahman Mohamed’s minimal, dark one-page portfolio, built with Astro 7 and
+Bun. The name, introduction, five selected projects, and top-right contact icons
+render as static HTML with no client JavaScript or external font requests. Each
+project has a custom grey outline SVG icon in `public/icons/`. The background
+preserves the original `#161616` dark theme, with a detailed grayscale botanical
+engraving and exposed roots. The transparent source is
+`src/assets/tree-roots-engraving.png`; Astro generates responsive WebP assets.
+The artwork scales down and fades on smaller screens. See the
+[artwork generation prompt](docs/artwork.md) for its creative direction.
+Contact icons are inline outline SVGs with accessible labels and 44-pixel targets.
 
 ## Development
 
@@ -15,8 +21,8 @@ bun run dev
 ```
 
 Open http://localhost:4321. Edit `src/pages/index.astro` for the brief and project
-list, `src/components/Nav.astro` for contact links, and `src/styles/globals.css`
-for the layout and typography. The favicon is `public/favicon.svg`.
+list and `src/styles/globals.css` for the layout and typography. The favicon is
+`public/favicon.svg`.
 
 ## Verification
 
@@ -27,8 +33,9 @@ bun run preview
 ```
 
 The tests build the site and check the brief, all five repository links, icon
-files, contact links, and the legacy route. The [responsive verification
-matrix](docs/responsive-checks.md) records browser checks at common screen sizes.
+files, contact destinations, dark theme metadata, and the legacy route. The
+[responsive verification matrix](docs/responsive-checks.md) records browser
+checks at common screen sizes.
 
 ## Deployment
 

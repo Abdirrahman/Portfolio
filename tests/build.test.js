@@ -6,8 +6,12 @@ test("the one-page portfolio contains the requested brief and five linked projec
   expect(home).toContain("Abdirrahman Mohamed");
   expect(home).toContain("Software roots, R&amp;D tax expertise; now helping companies claim what their innovation’s worth.");
   expect(home).toContain('id="projects"');
-  expect(home).toContain('href="mailto:abdirrahman@outlook.com"');
+  expect(home).toContain('id="projects-heading">Selected Projects</h2>');
+  expect(home).toContain('name="theme-color" content="#161616"');
+  expect(home).toContain('aria-label="Contact"');
+  expect(home).toContain('href="https://github.com/Abdirrahman"');
   expect(home).toContain('href="https://www.linkedin.com/in/abdirrahman/"');
+  expect(home).toContain('href="mailto:abdirrahman@outlook.com"');
 
   const projects = [...home.matchAll(/<a class="project-link" href="([^"]+)">([\s\S]*?)<\/a>/g)];
   expect(projects.map(([, href]) => href)).toEqual([
