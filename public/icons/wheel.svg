@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="rim" x1="13" y1="10" x2="49" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#a5bad1"/><stop offset=".45" stop-color="#627e9f"/><stop offset="1" stop-color="#334e71"/></linearGradient>
+    <linearGradient id="hub" x1="27" y1="27" x2="37" y2="39" gradientUnits="userSpaceOnUse"><stop stop-color="#f4ae88"/><stop offset="1" stop-color="#d8795d"/></linearGradient>
+    <filter id="shadow" x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse"><feDropShadow dy="2" stdDeviation="1.75" flood-color="#365271" flood-opacity=".18"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="32" cy="32" r="24" fill="#f4f6f9" stroke="#3c516b" stroke-width="1"/>
+    <circle cx="32" cy="32" r="20.5" stroke="url(#rim)" stroke-width="5"/>
+    <circle cx="32" cy="32" r="23" stroke="#d4e0ed" stroke-opacity=".8"/>
+    <path d="M32 14v36M14 32h36M19.3 19.3l25.4 25.4m0-25.4L19.3 44.7" stroke="#99a9bb" stroke-width="1.2"/>
+    <path d="m25.1 15.4 13.8 33.2m-23.5-9.7 33.2-13.8M15.4 25.1l33.2 13.8m-23.5 9.7 13.8-33.2" stroke="#bdc9d6" stroke-width=".75"/>
+    <circle cx="32" cy="32" r="6" fill="url(#hub)" stroke="#c1735b" stroke-width=".75"/>
+    <circle cx="32" cy="32" r="2" fill="#f7e7d7"/>
+    <path d="M17 17a21 21 0 0 1 25-3" stroke="#fff" stroke-opacity=".7" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="m32 32 11 7" stroke="#4f6076" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="41" y="37" width="7" height="3" rx="1.5" transform="rotate(-12 41 37)" fill="#354b65"/>
+  </g>
+</svg>

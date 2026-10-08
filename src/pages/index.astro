@@ -1,36 +1,66 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+
+const projects = [
+  {
+    name: "Covid19-ANN",
+    description: "Exploring COVID-19 detection through cough audio.",
+    href: "https://github.com/Abdirrahman/Covid19-ANN",
+    icon: "audio",
+  },
+  {
+    name: "Manzar",
+    description: "A quiet, local image and video viewer.",
+    href: "https://github.com/Abdirrahman/Manzar",
+    icon: "photo",
+  },
+  {
+    name: "Flags Game",
+    description: "A little game of flags and geography.",
+    href: "https://github.com/Abdirrahman/Flags-Game",
+    icon: "flag",
+  },
+  {
+    name: "Plant Sensors",
+    description: "A data pipeline for a museum’s living collection.",
+    href: "https://github.com/a-s-fernando/plant-sensors",
+    icon: "plant",
+  },
+  {
+    name: "Deloton",
+    description: "Turning live cycling data into useful insights.",
+    href: "https://github.com/BenCorrigan1203/Deloton",
+    icon: "wheel",
+  },
+];
 ---
 
 <Layout>
-  <section class="hero" aria-labelledby="name">
-    <h1 id="name">Abdirrahman Mohamed</h1>
-    <wired-divider aria-hidden="true"></wired-divider>
-    <p>
-      I'm a Data &amp; Software Engineer based in London. Before that,
-      I graduated from King's College London with a Bachelors in
-      Electronic Engineering. Take a moment to explore my{" "}
-      <a class="projects-link" href="/projects">projects.</a>
-    </p>
+  <header class="intro">
+    <h1>Abdirrahman Mohamed</h1>
+    <p>Software roots, R&amp;D tax expertise; now helping companies claim what their innovation’s worth.</p>
+  </header>
+
+  <section id="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Projects</h2>
+    <ul class="project-list">
+      {projects.map((project) => (
+        <li>
+          <a class="project-link" href={project.href}>
+            <img class="project-icon" src={`/icons/${project.icon}.svg`} width="48" height="48" alt="" />
+            <span class="project-copy">
+              <span class="project-name">{project.name}</span>
+              <span class="project-description">{project.description}</span>
+            </span>
+            <svg class="project-arrow" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 12 12 4M4.5 4H12v7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
+
+  <footer><Nav /></footer>
 </Layout>
-
-<script>
-  import "wired-divider";
-  import type { WiredDivider } from "wired-divider";
-  import { annotate } from "rough-notation";
-
-  const divider = document.querySelector<WiredDivider>("wired-divider")!;
-  new ResizeObserver(() => divider.wiredRender()).observe(divider);
-
-  const link = document.querySelector<HTMLElement>(".projects-link")!;
-  setTimeout(() => {
-    annotate(link, {
-      type: "underline",
-      color: "white",
-      strokeWidth: 2,
-      iterations: 4,
-      animate: !matchMedia("(prefers-reduced-motion: reduce)").matches,
-    }).show();
-  }, 1000);
-</script>

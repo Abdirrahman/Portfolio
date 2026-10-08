@@ -1,13 +1,11 @@
 ---
-import Nav from "../components/Nav.astro";
 import "../styles/globals.css";
-import "remixicon/fonts/remixicon.css";
 
 interface Props {
   title?: string;
 }
 
-const { title = "Abdirrahman Mohamed | Data & Software Engineer" } = Astro.props;
+const { title = "Abdirrahman Mohamed | Software & R&D tax" } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,17 +16,16 @@ const { title = "Abdirrahman Mohamed | Data & Software Engineer" } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Abdirrahman Mohamed, a Data & Software Engineer based in London. Explore my software and data projects."
+      content="Software roots, R&D tax expertise; now helping companies claim what their innovation’s worth. Selected projects by Abdirrahman Mohamed."
     />
+    <meta name="theme-color" content="#fcfcfd" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="page">
-      <Nav />
-      <main id="main">
-        <slot />
-      </main>
-    </div>
+    <main id="main" class="page">
+      <slot />
+    </main>
   </body>
 </html>

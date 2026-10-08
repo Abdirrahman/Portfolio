@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="paper" x1="10" y1="8" x2="51" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#eef0f5"/></linearGradient>
+    <linearGradient id="sky" x1="20" y1="15" x2="34" y2="43" gradientUnits="userSpaceOnUse"><stop stop-color="#92bae4"/><stop offset=".6" stop-color="#d8dff4"/><stop offset="1" stop-color="#f2d9cb"/></linearGradient>
+    <linearGradient id="hill" x1="18" y1="28" x2="44" y2="45" gradientUnits="userSpaceOnUse"><stop stop-color="#668d8d"/><stop offset="1" stop-color="#345d68"/></linearGradient>
+    <clipPath id="image"><rect x="14" y="14" width="33" height="30" rx="3"/></clipPath>
+    <filter id="shadow" x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse"><feDropShadow dy="2" stdDeviation="2" flood-color="#344960" flood-opacity=".18"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="17" y="10" width="37" height="43" rx="5" transform="rotate(10 35.5 31.5)" fill="#dce5ef" stroke="#b9c8d8"/>
+    <g transform="rotate(-8 30.5 31.5)">
+      <rect x="9.5" y="9.5" width="42" height="45" rx="5.5" fill="url(#paper)" stroke="#ced4dd"/>
+      <g clip-path="url(#image)">
+        <rect x="14" y="14" width="33" height="30" fill="url(#sky)"/>
+        <circle cx="38" cy="23" r="4.5" fill="#fff0cf"/>
+        <path d="m12 38 12-13 15 19H12Z" fill="#87a4a8"/>
+        <path d="m23 44 17-16 12 13v6H23Z" fill="url(#hill)"/>
+        <path d="m21 28 3-3 4 5-4-1-2 1Z" fill="#e4ebea"/>
+      </g>
+      <path d="M25 49h11" stroke="#c3cbd6" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

@@ -16,13 +16,7 @@
     "test": "bun run build && bun test"
   },
   "dependencies": {
-    "astro": "^7.3.5",
-    "remixicon": "^4.9.1",
-    "rough-notation": "^0.5.1",
-    "swiper": "^14.3.0",
-    "wired-card": "^2.1.0",
-    "wired-divider": "^2.1.0",
-    "wired-fab": "^2.1.0"
+    "astro": "^7.3.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

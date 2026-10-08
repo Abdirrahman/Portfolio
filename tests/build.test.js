@@ -1,43 +1,38 @@
 import { expect, test } from "bun:test";
 import { readFileSync, existsSync } from "node:fs";
 
-test("the static build preserves the portfolio's routes, content, links, and demos", () => {
+test("the one-page portfolio contains the requested brief and five linked projects", () => {
   const home = readFileSync("dist/index.html", "utf8");
-  const projects = readFileSync("dist/projects/index.html", "utf8");
-
   expect(home).toContain("Abdirrahman Mohamed");
-  expect(home).toContain("Data &amp; Software Engineer");
-  expect(home).toContain('href="/projects"');
-  expect(home).toContain("abdirrahman@outlook.com");
-  expect(projects.match(/<article class="project">/g)).toHaveLength(5);
-  for (const repository of ["Syl-Desktop", "React-Native-Template", "supa", "PrayerTimesTwitBot", "Covid19-ANN"]) {
-    expect(projects).toContain(`href="https://github.com/Abdirrahman/${repository}"`);
+  expect(home).toContain("Software roots, R&amp;D tax expertise; now helping companies claim what their innovation’s worth.");
+  expect(home).toContain('id="projects"');
+  expect(home).toContain('href="mailto:abdirrahman@outlook.com"');
+  expect(home).toContain('href="https://www.linkedin.com/in/abdirrahman/"');
+
+  const projects = [...home.matchAll(/<a class="project-link" href="([^"]+)">([\s\S]*?)<\/a>/g)];
+  expect(projects.map(([, href]) => href)).toEqual([
+    "https://github.com/Abdirrahman/Covid19-ANN",
+    "https://github.com/Abdirrahman/Manzar",
+    "https://github.com/Abdirrahman/Flags-Game",
+    "https://github.com/a-s-fernando/plant-sensors",
+    "https://github.com/BenCorrigan1203/Deloton",
+  ]);
+  for (const [, , project] of projects) {
+    const icon = project.match(/src="([^"]+\.svg)"/)?.[1];
+    expect(icon).toBeDefined();
+    expect(existsSync(`dist${icon}`)).toBe(true);
+    expect(project).toContain('alt=""');
   }
-  const demos = [...projects.matchAll(/<source src="([^"]+)"/g)];
-  expect(demos).toHaveLength(5);
-  for (const [, source] of demos) expect(existsSync(`dist${source}`)).toBe(true);
-  expect(projects).toContain('href="https://supabase-psql-tut.netlify.app"');
-  expect(projects).toContain('href="https://twitter.com/BotPrayerTimes"');
-  expect(JSON.parse(readFileSync("dist/api/hello", "utf8"))).toEqual({ name: "John Doe" });
+  expect(home).not.toContain("<script");
+  expect(home).not.toContain("<video");
 });
 
-test("demos are lightweight, streamable MP4s with previews and deferred loading", () => {
-  const projects = readFileSync("dist/projects/index.html", "utf8");
-  const videos = [...projects.matchAll(/<video\b([^>]+)>\s*<source src="([^"]+)" type="video\/mp4"/g)];
-  expect(videos).toHaveLength(5);
-  let totalBytes = 0;
-  for (const [, attributes, source] of videos) {
-    expect(attributes).toContain('preload="none"');
-    expect(attributes).toContain("controls");
-    expect(attributes).not.toContain("autoplay");
-    const poster = attributes.match(/poster="([^"]+\.webp)"/)?.[1];
-    expect(poster).toBeDefined();
-    expect(existsSync(`dist${poster}`)).toBe(true);
-    expect(source).toMatch(/\/videos\/[^/]+\.[a-f0-9]{10}\.mp4$/);
-    const data = readFileSync(`dist${source}`);
-    totalBytes += data.length;
-    expect(data.indexOf("moov")).toBeGreaterThan(0);
-    expect(data.indexOf("moov")).toBeLessThan(data.indexOf("mdat"));
-  }
-  expect(totalBytes).toBeLessThan(5 * 1024 * 1024);
+test("old project links redirect to the one-page project section", () => {
+  const redirect = readFileSync("dist/projects/index.html", "utf8");
+  expect(redirect).toContain("/#projects");
+  const config = JSON.parse(readFileSync("vercel.json", "utf8"));
+  expect(config.redirects).toContainEqual({
+    source: "/projects", destination: "/#projects", permanent: true,
+  });
+  expect(JSON.parse(readFileSync("dist/api/hello", "utf8"))).toEqual({ name: "John Doe" });
 });

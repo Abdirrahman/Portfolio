@@ -1,50 +1,5 @@
-<nav class="nav" aria-label="Contact links">
-  <a
-    class="nav-link"
-    href="https://github.com/abdirrahmansl"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="GitHub profile"
-  >
-    <i class="ri-github-line" aria-hidden="true"></i>
-  </a>
-  <a
-    class="nav-link"
-    href="https://www.linkedin.com/in/abdirrahman/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn profile"
-  >
-    <i class="ri-linkedin-box-line" aria-hidden="true"></i>
-  </a>
-  <button
-    class="nav-link"
-    type="button"
-    id="copy-email"
-    aria-label="Copy email address"
-    data-email="abdirrahman@outlook.com"
-  >
-    <i class="ri-mail-line" aria-hidden="true"></i>
-  </button>
+<nav class="contact-links" aria-label="Contact">
+  <a href="mailto:abdirrahman@outlook.com">Email</a>
+  <a href="https://github.com/Abdirrahman">GitHub</a>
+  <a href="https://www.linkedin.com/in/abdirrahman/">LinkedIn</a>
 </nav>
-<p class="toast" id="email-status" role="status" aria-live="polite"></p>
-
-<script>
-  const button = document.querySelector<HTMLButtonElement>("#copy-email")!;
-  const status = document.querySelector<HTMLParagraphElement>("#email-status")!;
-  let timeout: ReturnType<typeof setTimeout>;
-
-  button.addEventListener("click", async () => {
-    const email = button.dataset.email!;
-    clearTimeout(timeout);
-    try {
-      await navigator.clipboard.writeText(email);
-      status.textContent = "Copied!";
-    } catch {
-      status.textContent = `Email: ${email}`;
-    }
-    timeout = setTimeout(() => {
-      status.textContent = "";
-    }, 5000);
-  });
-</script>
