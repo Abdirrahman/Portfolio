@@ -1,13 +1,29 @@
 ---
 import "../styles/globals.css";
-import { Image } from "astro:assets";
-import canopyArt from "../assets/canopy-study.webp";
 
 interface Props {
   title?: string;
+  preview?: boolean;
 }
 
-const { title = "Abdirrahman Mohamed | Software & R&D tax" } = Astro.props;
+const { title = "Abdirrahman Mohamed | R&D Tax Consultant", preview = false } = Astro.props;
+const description = "Abdirrahman Mohamed, R&D tax consultant with software and data engineering experience. Previously at Bonham & Brook and Sigma Labs.";
+const canonical = new URL("/", Astro.site).href;
+const profile = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: canonical,
+  name: title,
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${canonical}#abdirrahman`,
+    name: "Abdirrahman Mohamed",
+    alternateName: "Abdirrahman",
+    url: canonical,
+    description,
+    sameAs: ["https://github.com/Abdirrahman", "https://www.linkedin.com/in/abdirrahman/"],
+  },
+};
 ---
 
 <!doctype html>
@@ -16,30 +32,28 @@ const { title = "Abdirrahman Mohamed | Software & R&D tax" } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Data and software engineering roots. R&D tax Technical Consultant at Bonham & Brook, helping companies claim what their innovation’s worth."
-    />
+    {preview && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="description" content={description} />
+    {!preview && <>
+      <link rel="canonical" href={canonical} />
+      <meta property="og:type" content="profile" />
+      <meta property="og:site_name" content="Abdirrahman" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={canonical} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <script type="application/ld+json" set:html={JSON.stringify(profile).replace(/</g, "\\u003c")} />
+    </>}
     <meta name="theme-color" content="#161616" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/inter-latin-variable-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/newsreader-latin-variable-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/newsreader-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
   </head>
   <body>
-    <div class="page-background" aria-hidden="true">
-      <Image
-        class="canopy-art"
-        src={canopyArt}
-        alt=""
-        width={1672}
-        widths={[640, 1280, 1672]}
-        sizes="100vw"
-        format="webp"
-        quality={80}
-        loading="eager"
-      />
-    </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <nav class="contact-links" aria-label="Contact">
       <a href="https://github.com/Abdirrahman" aria-label="GitHub" title="GitHub">

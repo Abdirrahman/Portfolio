@@ -27,8 +27,35 @@ test("the one-page portfolio contains the requested brief and five linked projec
     expect(existsSync(`dist${icon}`)).toBe(true);
     expect(project).toContain('alt=""');
   }
-  expect(home).not.toContain("<script");
+  const scripts = [...home.matchAll(/<script\b([^>]*)>/g)];
+  expect(scripts).toHaveLength(1);
+  expect(scripts[0][1]).toContain('type="application/ld+json"');
   expect(home).not.toContain("<video");
+});
+
+test("the published career and search metadata reflect the final portfolio", () => {
+  const home = readFileSync("dist/index.html", "utf8");
+  expect(home).toMatch(/Previously a Technical Consultant at[\s\S]*?Bonham &amp; Brook[\s\S]*?and a Data Engineer at[\s\S]*?Sigma Labs/);
+  expect(home).not.toContain("Leyton");
+  expect(home).not.toContain("identity-role");
+  expect(home).toContain("<title>Abdirrahman Mohamed | R&amp;D Tax Consultant</title>");
+  expect(home).toContain('rel="canonical" href="https://www.abdirrahman.com/"');
+  expect(home).toContain('property="og:url" content="https://www.abdirrahman.com/"');
+  expect(home).toContain('name="twitter:card" content="summary"');
+  expect(home).not.toContain('name="robots" content="noindex');
+  const profile = JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  expect(profile["@type"]).toBe("ProfilePage");
+  expect(profile.mainEntity["@type"]).toBe("Person");
+  expect(profile.mainEntity.name).toBe("Abdirrahman Mohamed");
+  expect(profile.mainEntity.sameAs).toEqual([
+    "https://github.com/Abdirrahman", "https://www.linkedin.com/in/abdirrahman/",
+  ]);
+  const description = home.match(/<meta name="description" content="([^"]+)"/)[1];
+  expect(description).toContain("R&amp;D tax consultant");
+  expect(description).not.toContain("Leyton");
+  expect(readFileSync("dist/robots.txt", "utf8")).toContain("Sitemap: https://www.abdirrahman.com/sitemap.xml");
+  const sitemap = readFileSync("dist/sitemap.xml", "utf8");
+  expect([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(([, url]) => url)).toEqual(["https://www.abdirrahman.com/"]);
 });
 
 test("old project links redirect to the one-page project section", () => {

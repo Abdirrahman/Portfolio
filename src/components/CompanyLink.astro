@@ -1,0 +1,68 @@
+---
+interface Props {
+  company: "leyton" | "sigma-labs" | "bonham-and-brook";
+}
+
+const companies = {
+  leyton: { name: "Leyton", href: "https://leyton.com/uk/", logo: "leyton.svg", width: 108, height: 44 },
+  "sigma-labs": { name: "Sigma Labs", href: "https://www.sigmalabs.co.uk/", logo: "sigma-labs.webp", width: 250, height: 40 },
+  "bonham-and-brook": { name: "Bonham & Brook", href: "https://bonhamandbrook.co.uk/meet-the-team", logo: "bonham-and-brook.svg", width: 210, height: 58 },
+};
+const { name, href, logo, width, height } = companies[Astro.props.company];
+---
+
+<a class="company-link" href={href}>
+  <span class="company-label">{name}</span>
+  <img class="company-logo" src={`/logos/${logo}`} width={width} height={height} alt="" aria-hidden="true" />
+</a>
+
+<style>
+  .company-link {
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+    white-space: nowrap;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .company-label {
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+
+  .company-logo {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0;
+    transform: translateY(2px);
+    pointer-events: none;
+    transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+
+  .company-link:focus-visible .company-label { opacity: 0; transform: translateY(-2px); }
+  .company-link:focus-visible .company-logo { opacity: 0.75; transform: none; }
+
+  @media (hover: hover) {
+    .company-link:hover .company-label { opacity: 0; transform: translateY(-2px); }
+    .company-link:hover .company-logo { opacity: 0.75; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .company-label, .company-logo { transition: none; transform: none !important; }
+  }
+
+  @media (forced-colors: active) {
+    .company-label { opacity: 1 !important; transform: none !important; }
+    .company-logo { display: none; }
+  }
+</style>

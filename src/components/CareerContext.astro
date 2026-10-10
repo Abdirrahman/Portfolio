@@ -1,0 +1,18 @@
+---
+import CompanyLink from "./CompanyLink.astro";
+---
+
+<p class="career-context intro-context">Previously a Technical Consultant at <CompanyLink company="bonham-and-brook" /> and a Data Engineer at <CompanyLink company="sigma-labs" />.</p>
+
+<style>
+  .career-context.intro-context {
+    margin: 1.25rem 0 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 640px) {
+    .career-context.intro-context { font-size: 0.875rem; }
+  }
+</style>

@@ -1,67 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const projects = [
-  {
-    name: "Covid19-ANN",
-    description: "COVID-19 detection from cough audio.",
-    href: "https://github.com/Abdirrahman/Covid19-ANN",
-    icon: "audio",
-  },
-  {
-    name: "Manzar",
-    description: "A local image and video viewer.",
-    href: "https://github.com/Abdirrahman/Manzar",
-    icon: "photo",
-  },
-  {
-    name: "Flags Game",
-    description: "A world flag guessing game.",
-    href: "https://github.com/Abdirrahman/Flags-Game",
-    icon: "flag",
-  },
-  {
-    name: "Plant Sensors",
-    description: "Plant sensor data pipeline.",
-    href: "https://github.com/a-s-fernando/plant-sensors",
-    icon: "plant",
-  },
-  {
-    name: "Deloton",
-    description: "Live cycling data and insights.",
-    href: "https://github.com/BenCorrigan1203/Deloton",
-    icon: "wheel",
-  },
-];
+import PortfolioContent from "../components/PortfolioContent.astro";
 ---
 
 <Layout>
-  <header class="intro">
-    <h1>Abdirrahman</h1>
-    <p>Software roots, R&amp;D tax expertise; now helping companies claim what their innovation’s worth.</p>
-    <p class="intro-context">Previously a data &amp; software engineer. Now a Technical Consultant at <a href="https://bonhamandbrook.co.uk/meet-the-team">Bonham &amp; Brook</a>.</p>
-  </header>
-
-  <section id="projects" aria-labelledby="projects-heading">
-    <h2 id="projects-heading">Selected Projects</h2>
-    <ul class="project-list">
-      {projects.map((project) => (
-        <li>
-          <a class="project-link" href={project.href}>
-            <img class="project-icon" src={`/icons/${project.icon}.svg`} width="32" height="32" alt="" />
-            <span class="project-copy">
-              <span class="project-name">
-                {project.name}
-                <svg class="project-arrow" aria-hidden="true" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 12 12 4M5 4h7v7" />
-                </svg>
-              </span>
-              <span class="project-description">{project.description}</span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-
+  <PortfolioContent />
 </Layout>
