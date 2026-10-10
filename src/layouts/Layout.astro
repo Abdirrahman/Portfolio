@@ -1,7 +1,7 @@
 ---
 import "../styles/globals.css";
 import { Image } from "astro:assets";
-import rootsArt from "../assets/tree-roots-engraving.png";
+import canopyArt from "../assets/canopy-study.webp";
 
 interface Props {
   title?: string;
@@ -22,19 +22,21 @@ const { title = "Abdirrahman Mohamed | Software & R&D tax" } = Astro.props;
     />
     <meta name="theme-color" content="#161616" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/inter-latin-variable-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/newsreader-latin-variable-normal.woff2" as="font" type="font/woff2" crossorigin />
     <title>{title}</title>
   </head>
   <body>
     <div class="page-background" aria-hidden="true">
       <Image
-        class="roots-art"
-        src={rootsArt}
+        class="canopy-art"
+        src={canopyArt}
         alt=""
-        width={800}
-        widths={[480, 800, 1122]}
-        sizes="(max-width: 640px) 416px, (max-width: 900px) 44vw, 42vw"
+        width={1672}
+        widths={[640, 1280, 1672]}
+        sizes="100vw"
         format="webp"
-        quality={85}
+        quality={80}
         loading="eager"
       />
     </div>

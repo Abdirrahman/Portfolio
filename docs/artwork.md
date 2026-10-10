@@ -1,4 +1,34 @@
-# Tree artwork
+# Portfolio background artwork
+
+## Canopy photograph — 10 October 2026
+
+The homepage uses an original grayscale photograph looking up into a tree
+canopy, inspired by the quiet woodland atmosphere of
+[Manuel Moreale’s opening](https://manuelmoreale.dev/). The image was generated
+with the built-in `image_gen` tool; Manuel’s photograph/video was not reused.
+
+Source: [`src/assets/canopy-study.webp`](../src/assets/canopy-study.webp),
+1672 × 941 pixels, RGB, 247,776 bytes. WebP encoding used quality 83 without
+changing the image content. Astro generates 640, 1280, and 1672 pixel versions
+at quality 80. The built output sizes were approximately 45, 140, and 229 KiB.
+
+The canopy occupies the right side of the image, leaving open sky on the left.
+CSS applies grayscale, intersecting horizontal/vertical masks and 12% desktop
+opacity, 9% on tablets and 5.5% on phones. It is decorative, hidden from
+assistive technology, and cannot intercept input. The existing 500ms one-shot
+fade is retained and runs only when reduced motion is not requested.
+
+### Final generation prompt
+
+Use case: photorealistic-natural
+Asset type: original grayscale background photograph for an ultra-minimal personal website.
+Primary request: A deeply atmospheric, finely detailed silver-gelatin photograph looking almost vertically upward beneath the edge of a mature deciduous tree canopy on an overcast day. Landscape composition, approximately 16:9. The principal trunk is mostly outside the frame at the lower right; slender natural branches reach diagonally from the right edge and upper-right toward the top center. Irregular small leaves, countless hairline twigs, and softly layered foliage occupy primarily the RIGHT HALF and the TOP RIGHT. The LEFT HALF and LOWER LEFT contain broad quiet open gray sky with very little detail, suitable as background beneath a narrow text column.
+Style: authentic understated fine-art analog black-and-white photography, realistic natural branch structure, crisp small twigs, gentle film texture, softly diffused gray daylight, no dramatized bloom. The image should look like a photograph taken under a tree, not a drawing or isolated tree portrait. Palette entirely neutral black, charcoal, silver, pale gray; no color tint. Preserve midtone branch and leaf detail so the website can darken it with CSS. Calm contemplative atmosphere, no high-contrast sun or sky highlights.
+Composition: organic asymmetrical crop, the canopy extends past the image edges. A few graceful branches can reach into the upper left, but most of the left side should remain spacious. No horizon, ground, grass, buildings, people, animals, roots, entire freestanding tree, illustration, engraving, graphic patterns, typography, text, watermark, or borders.
+
+The previous engraving is retained for the unpublished local concept previews.
+
+## Previous engraving — 8 October 2026
 
 Generated with the built-in `image_gen` tool on 8 October 2026.
 

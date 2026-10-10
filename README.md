@@ -4,10 +4,11 @@ Abdirrahman Mohamed’s minimal, dark one-page portfolio, built with Astro 7 and
 Bun. The name, introduction, five selected projects, and top-right contact icons
 render as static HTML with no client JavaScript or external font requests. Each
 project has a custom grey outline SVG icon in `public/icons/`. The background
-preserves the original `#161616` dark theme, with a detailed grayscale botanical
-engraving and exposed roots. The transparent source is
-`src/assets/tree-roots-engraving.png`; Astro generates responsive WebP assets.
-The artwork scales down and fades on smaller screens. See the
+preserves the original `#161616` dark theme, with an original grayscale tree
+canopy photograph. The source is `src/assets/canopy-study.webp`; Astro generates
+responsive WebP assets. The photograph fades into the page and becomes quieter
+on smaller screens. Inter headings and Newsreader text are self-hosted under
+`public/fonts/`, with their SIL Open Font Licenses. See the
 [artwork generation prompt](docs/artwork.md) for its creative direction.
 Contact icons are inline outline SVGs with accessible labels and 44-pixel targets.
 

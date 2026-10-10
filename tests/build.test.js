@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 
 test("the one-page portfolio contains the requested brief and five linked projects", () => {
   const home = readFileSync("dist/index.html", "utf8");
-  expect(home).toContain("Abdirrahman Mohamed");
+  expect(home).toContain("<h1>Abdirrahman</h1>");
   expect(home).toContain("Software roots, R&amp;D tax expertise; now helping companies claim what their innovation’s worth.");
   expect(home).toContain('id="projects"');
   expect(home).toContain('id="projects-heading">Selected Projects</h2>');
